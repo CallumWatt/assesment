@@ -1,0 +1,107 @@
+package Assessment;
+import java.util.Scanner;
+public class Assesment {
+
+	static Scanner kboard = new Scanner(System.in);
+	//prompts user for forename
+	public static String getForename()
+	{
+		String forename;
+		System.out.println("Please enter your forename:");
+	 	forename = kboard.next();
+	 	return(forename);
+	 }//end of getForename()
+	
+	//prompts user for surname
+	 public static String getSurname()
+	 {
+		 String surname;
+		 System.out.print("Please enter your surname: ");
+		 surname = kboard.next();
+		 return(surname);
+	 }// end of getSurname()
+	 
+	 public static void displayUsername()
+	 {
+		 String forename;
+		 String surname;
+		 forename = getForename();
+		 surname = getSurname();
+		 char forenameLetter;
+		 String capSurname = ("");
+		 forenameLetter = forename.charAt(0);
+		 capSurname = surname.substring(0,1).toUpperCase() + surname.substring(1).toLowerCase();
+	 	 System.out.println("your username is " + forenameLetter + capSurname);
+	 }//end of displayDetails()
+	 
+	 public static int getFactorial()
+	 {
+		 
+		 int inputNumber;
+		 System.out.println("Please enter number");
+		 inputNumber = kboard.nextInt();
+		 return(inputNumber);
+	 }
+	 public static int calculateFactorial()
+	 {
+		 	int inputNumber;
+		 	inputNumber = getFactorial();
+	        int factorial = 1;
+	        for(int i = 1; i <= inputNumber; ++i)
+	        {
+	            // factorial = factorial * i;
+	            factorial *= i;
+	       
+	        }
+	        return (factorial);
+	 }
+
+	 public static void display()
+	 {
+		 int inputNumber;
+		 int factorial;
+		 inputNumber = getFactorial();
+		 factorial = calculateFactorial();
+		 System.out.println(inputNumber + " Factorial equals " + factorial);
+	 }
+
+	 
+	 public static void getUserChoice()
+	 {
+		 String choice;
+		 do
+		 	{
+			 	System.out.println("Please select 1 to generate a username, or select 2 for calculating a factorial, or select 3 to exit the program ");
+			 	choice = kboard.next();
+			 	//calls getForename(),getSurname() and	displayDetails(userForename, userSurname))
+			 	if (choice.equals("1"))
+			 	{
+			 	System.out.println("You have selected to generate a username");
+			 	
+			 	displayUsername();
+			 	}//end if
+			 	
+			 	//calls userHeight(), userWidth() and display(userHeight,userWidth)
+				 if (choice.equals("2"))
+				 {
+					System.out.println("You have selected to calculate a factorial");
+					display();
+				 }//end if
+	 
+				 //terminates the program
+				 if (choice.equals("3"))
+				 {
+					 System.out.println("Program terminated.");
+				 }//end if
+		 	}
+		 while (!choice.equals("3"));
+		 //end do while
+	 }//end of getUserChoice()
+	 
+	 public static void main (String[] args)
+	 {
+		 //calls getUserChoice()
+		 getUserChoice();
+	}//end of main
+//end of class
+}
